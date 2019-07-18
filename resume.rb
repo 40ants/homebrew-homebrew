@@ -244,7 +244,7 @@ class Resume < Formula
 
     ENV["CL_SOURCE_REGISTRY"] = "#{buildpath}/lib//:#{buildpath}//"
     ENV["ASDF_OUTPUT_TRANSLATIONS"] = "/:/"
-    system "buildapp", "--load-system", "resume", "--output", "resume", "--entry", "resume/main:main"
+    system "buildapp", "--compress-core", "--load-system", "resume", "--output", "resume", "--entry", "resume/main:main"
 
     bin.install "resume"
   end
