@@ -81,8 +81,8 @@ class Resume < Formula
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
@@ -98,6 +98,12 @@ class Resume < Formula
   end
 
 
+  resource "Zulu-Inuoe-trivial-cltl2" do
+    url "http://dist.ultralisp.org/ultralisp/archive/Z/Zulu-Inuoe-trivial-cltl2-20190624223118.tgz"
+    sha256 "cb304c3474b2c5cb792a9820c0429b5cd8a19e533e40238e45e18dd49352142e"
+  end
+
+
   resource "guicho271828-lisp-namespace" do
     url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-lisp-namespace-20190319072307.tgz"
     sha256 "9298ba7a9c79dbd33bcbc6bb5622d207cc23d6dce9fc48ecdc6d4b908d0cd66d"
@@ -105,38 +111,38 @@ class Resume < Formula
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
   resource "guicho271828-trivia" do
-    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190623173118.tgz"
-    sha256 "c5614c90b0d9022d7dbc280cc398add7745e3ad50802151f2e611d156f7b0596"
+    url "http://dist.ultralisp.org/ultralisp/archive/g/guicho271828-trivia-20190718061106.tgz"
+    sha256 "7be1f6c835a623f155adadc7c828f922252fb88c38958b088117d8f79430d8f2"
   end
 
 
