@@ -3,7 +3,7 @@ class ClBrewer < Formula
   homepage "https://github.com/40ants/cl-brewer"
   url "https://github.com/40ants/cl-brewer/archive/v0.8.2.tar.gz"
   sha256 "9c294e9a3b837c8865653ca8a892b84487a99692a21c75129b077d027d628576"
-  head NIL
+  head "https://github.com/40ants/cl-brewer"
 
   depends_on "sbcl"
 
@@ -145,7 +145,7 @@ class ClBrewer < Formula
     ENV["CL_SOURCE_REGISTRY"] = "#{buildpath}/lib//:#{buildpath}//"
     ENV["ASDF_OUTPUT_TRANSLATIONS"] = "/:/"
 
-    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :deploy)", "--eval", "(handler-case (asdf:make :cl-brewer) (error () (uiop:quit 1)))"
+    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :deploy)", "--eval", "(handler-case (asdf:load-system :quicklisp-starter) (error () (uiop:quit 1)))", "--eval", "(handler-case (asdf:make :cl-brewer) (error () (uiop:quit 1)))"
     bin.install Dir["bin/*"]
   end
 end
