@@ -8,18 +8,18 @@ class ClBrewer < Formula
   depends_on "sbcl"
 
   resource "alexandria" do
-    url "http://beta.quicklisp.org/archive/alexandria/2022-07-07/alexandria-20220707-git.tgz"
-    sha256 "8e6173120de8786c7ae0fefba8102d82620fac42e9aade954af9135e0870d6b1"
+    url "http://beta.quicklisp.org/archive/alexandria/2023-06-18/alexandria-20230618-git.tgz"
+    sha256 "d5fbb349204082b61a7a6c58aed1d1606e524bfa38ecd0ec6ebed7f658061819"
   end
 
   resource "cffi" do
-    url "http://beta.quicklisp.org/archive/cffi/2023-02-14/cffi-20230214-git.tgz"
-    sha256 "cffcb66a21a0d126c6f7f835f151b86176d57b70e2d16ec2e546ba3ac74b39cd"
+    url "http://beta.quicklisp.org/archive/cffi/2023-06-18/cffi-20230618-git.tgz"
+    sha256 "223f9fa6f1c50df1a8d5b7db0d02c520a4454965ed1a996cf5a6d20f447058c3"
   end
 
   resource "cl+ssl" do
-    url "http://beta.quicklisp.org/archive/cl+ssl/2023-02-14/cl+ssl-20230214-git.tgz"
-    sha256 "910718552c6f84a76681f39b8402c36a74d484bba217e2732f213d4b9e264581"
+    url "http://beta.quicklisp.org/archive/cl+ssl/2023-06-18/cl+ssl-20230618-git.tgz"
+    sha256 "c5653c3d96b169003a386628cf0c92aaf256ba27377f569fe45e4e1012c80343"
   end
 
   resource "cl-babel-babel" do
@@ -73,8 +73,8 @@ class ClBrewer < Formula
   end
 
   resource "quicklisp-quicklisp-client" do
-    url "http://dist.ultralisp.org/archive/1254/quicklisp-quicklisp-client-20221213010143.tgz"
-    sha256 "9d1432aa6b1f5153872b165c6fa5ae263e22e769197ce1e5336c5a09f6373796"
+    url "http://dist.ultralisp.org/archive/1254/quicklisp-quicklisp-client-20210216010650.tgz"
+    sha256 "d8e39e878da43e54ea69194c075da371e57c7c76f01000d541dc43e3c3ee6721"
   end
 
   resource "sharplispers-chipz" do
@@ -128,13 +128,13 @@ class ClBrewer < Formula
   end
 
   resource "uiop" do
-    url "http://beta.quicklisp.org/archive/uiop/2022-11-06/uiop-3.3.6.tgz"
+    url "http://beta.quicklisp.org/archive/uiop/2023-06-18/uiop-3.3.6.tgz"
     sha256 "302acb92b985b4b44a2ae2bdcc0d385084138c17acaf2cdc7ed2dc155172ec70"
   end
 
   resource "usocket" do
-    url "http://beta.quicklisp.org/archive/usocket/2022-11-06/usocket-0.8.5.tgz"
-    sha256 "aef6f5b4b9232cf422a05e3f958e1d85a6d9ad1a6f05b1833598a96f3c215c2c"
+    url "http://beta.quicklisp.org/archive/usocket/2023-06-18/usocket-0.8.6.tgz"
+    sha256 "33b94a7d3b2258bf6f06fbc52560dfbc3d2d8dd87ef407bfb18f10c40b17eb6e"
   end
 
   def install
