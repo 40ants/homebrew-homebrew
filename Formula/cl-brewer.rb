@@ -1,12 +1,11 @@
 class ClBrewer < Formula
   desc "Homebrew formula builder for common lisp applications"
   homepage "https://github.com/40ants/cl-brewer"
-  url "https://github.com/40ants/cl-brewer/archive/v0.8.1.tar.gz"
-  sha256 "46f3ee8ebd869075d2d9662ee5a062fb4f5e7d37057a23f41951b7a9258c19b0"
+  url "https://github.com/40ants/cl-brewer/archive/v0.8.2.tar.gz"
+  sha256 "9c294e9a3b837c8865653ca8a892b84487a99692a21c75129b077d027d628576"
   head NIL
 
   depends_on "sbcl"
-  depends_on "buildapp" => :build
 
   resource "alexandria" do
     url "http://beta.quicklisp.org/archive/alexandria/2022-07-07/alexandria-20220707-git.tgz"
@@ -93,6 +92,21 @@ class ClBrewer < Formula
     sha256 "98c27530444a65fcdc71f2dc539a252efa977f1a2ebfd6a0453ddfa572ca1d83"
   end
 
+  resource "Shinmera-deploy" do
+    url "http://dist.ultralisp.org/archive/858/Shinmera-deploy-20230614113440.tgz"
+    sha256 "c44a274d01c2f0c34369b4576bf33c500e3024f749eae7ac14b6deef4b12a43f"
+  end
+
+  resource "Shinmera-documentation-utils" do
+    url "http://dist.ultralisp.org/ultralisp/archive/S/Shinmera-documentation-utils-20190627101653.tgz"
+    sha256 "f2a238459c2a91032af093487e8237b38c321eae2c656c23558b711f6bc90815"
+  end
+
+  resource "Shinmera-trivial-indent" do
+    url "http://dist.ultralisp.org/archive/193/Shinmera-trivial-indent-20230221065556.tgz"
+    sha256 "5e66aa163143828c8b2a89bb0bb4f4c00003e7a09b9a291c86eeb9a4c2b957c4"
+  end
+
   resource "sionescu-bordeaux-threads" do
     url "http://dist.ultralisp.org/archive/1238/sionescu-bordeaux-threads-20230604143150.tgz"
     sha256 "388625b5f352f5099bffa548569582c6eeb751e0293b4e861c3e534643d43587"
@@ -131,8 +145,7 @@ class ClBrewer < Formula
     ENV["CL_SOURCE_REGISTRY"] = "#{buildpath}/lib//:#{buildpath}//"
     ENV["ASDF_OUTPUT_TRANSLATIONS"] = "/:/"
 
-    system "buildapp", "--compress-core", "--load-system", "cl-brewer", "--output", "cl-brewer", "--entry", "cl-brewer.main"
-
-    bin.install "cl-brewer"
+    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :deploy)", "--eval", "(handler-case (asdf:make :cl-brewer) (error () (uiop:quit 1)))"
+    bin.install Dir["bin/*"]
   end
 end
