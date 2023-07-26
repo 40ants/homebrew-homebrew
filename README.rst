@@ -22,5 +22,5 @@ then install any program from the tap as usual. For example:
 
 .. code:: bash
 
-   brew install cl-brewer
+   brew install cl-repl
 
