@@ -16,11 +16,6 @@ class TestBrewApp < Formula
     sha256 "3d733cc66520132ce0743ca2b363e1806c0311c8fb128e77d8af0ef0fb8638ee"
   end
 
-  resource "40ants-cl-brewer" do
-    url "http://dist.ultralisp.org/archive/1977/40ants-cl-brewer-20230714194939.tgz"
-    sha256 "545c9a4a03254a96a0608f91d4f4c82439993be4433503d5202511cd66eedf3b"
-  end
-
   resource "40ants-cl-plus-ssl-osx-fix" do
     url "http://dist.ultralisp.org/archive/1962/40ants-cl-plus-ssl-osx-fix-20230618185126.tgz"
     sha256 "f26673e427545bfc7affae80d14d74a78c6b5f17b1a68d4a38c6223e894f92bb"
@@ -80,7 +75,7 @@ class TestBrewApp < Formula
     ENV["CL_SOURCE_REGISTRY"] = "#{buildpath}/lib//:#{buildpath}//"
     ENV["ASDF_OUTPUT_TRANSLATIONS"] = "/:/"
 
-    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :cl-brewer/deploy/hooks)", "--eval", "(handler-case (asdf:make :test-brew-app) (error () (uiop:quit 1)))"
+    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :cl-brewer/deploy/hooks)", "--eval", "(handler-case (asdf:make :test-brew-app) (error (e) (format *error-output* \"~A~%\" e) (uiop:quit 1)))"
 
     system "bash", "-c", "mkdir dyn-libs && find bin/ -name '*.dylib' -exec mv '{}' dyn-libs/ \\;"
 

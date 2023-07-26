@@ -1,8 +1,8 @@
 class ClBrewer < Formula
   desc "Homebrew formula builder for Common Lisp applications."
   homepage "https://40ants.com/cl-brewer/"
-  url "https://github.com/40ants/cl-brewer/archive/v0.10.3.tar.gz"
-  sha256 "57d45337d9f433a4eaae84b2fd7fa288cdf54ba723c462b036e5e9253585c59f"
+  url "https://github.com/40ants/cl-brewer/archive/v0.11.0.tar.gz"
+  sha256 "a465bd2a5737e92a505bd01461e2e50b74a71062376557170acb5de6de3ecbb9"
   head "https://github.com/40ants/cl-brewer"
 
   depends_on "sbcl" => :build
@@ -12,8 +12,13 @@ class ClBrewer < Formula
   depends_on "zstd"
 
   resource "40ants-40ants-asdf-system" do
-    url "http://dist.ultralisp.org/archive/1825/40ants-40ants-asdf-system-20230210163819.tgz"
-    sha256 "3d733cc66520132ce0743ca2b363e1806c0311c8fb128e77d8af0ef0fb8638ee"
+    url "http://dist.ultralisp.org/archive/1825/40ants-40ants-asdf-system-20230724171226.tgz"
+    sha256 "6a1f4785fb233bdf38fe4cbcb6e8181b9a3e6b3e6790eaa16e6f92dbfd4e3ab0"
+  end
+
+  resource "40ants-cl-brewer" do
+    url "http://dist.ultralisp.org/archive/1977/40ants-cl-brewer-20230725165337.tgz"
+    sha256 "10b4d88c0d79a920230b012a8b3e12ef544534003d507e70da753ea44893bff9"
   end
 
   resource "40ants-cl-plus-ssl-osx-fix" do
@@ -168,14 +173,29 @@ class ClBrewer < Formula
 
   def install
     resources.each do |resource|
-      resource.stage buildpath/"lib"/resource.name
+      resource.stage buildpath/"_brew_resources"/resource.name
     end
 
     ENV["LIBEXEC_PATH"] = "#{libexec}/"
-    ENV["CL_SOURCE_REGISTRY"] = "#{buildpath}/lib//:#{buildpath}//"
+    ENV["CL_SOURCE_REGISTRY"] = "#{buildpath}/:#{buildpath}/_brew_resources//"
     ENV["ASDF_OUTPUT_TRANSLATIONS"] = "/:/"
 
-    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :cl-brewer/deploy/hooks)", "--eval", "(handler-case (asdf:load-system :quicklisp-starter) (error (e) (format *error-output* \"~A~%\" e) (uiop:quit 1)))", "--eval", "(handler-case (asdf:make :cl-brewer) (error (e) (format *error-output* \"~A~%\" e) (uiop:quit 1)))"
+    system "sbcl", "--eval", "(require :asdf)", "--eval", "(push :deploy-console *features*)", "--eval", "(asdf:load-system :cl-brewer-deploy-hooks)", "--eval", "(HANDLER-BIND ((ERROR
+                (LAMBDA (E)
+                  (UIOP/IMAGE:PRINT-BACKTRACE :CONDITION E)
+                  (UIOP/IMAGE:QUIT 1)))
+               (WARNING #'MUFFLE-WARNING))
+  (ASDF/OPERATE:LOAD-SYSTEM \"quicklisp-starter\"))", "--eval", "(HANDLER-BIND ((ERROR
+                (LAMBDA (E)
+                  (UIOP/IMAGE:PRINT-BACKTRACE :CONDITION E)
+                  (UIOP/IMAGE:QUIT 1)))
+               (WARNING #'MUFFLE-WARNING))
+  (ASDF/OPERATE:LOAD-SYSTEM \"cl-plus-ssl-osx-fix\"))", "--eval", "(HANDLER-BIND ((ERROR
+                (LAMBDA (E)
+                  (UIOP/IMAGE:PRINT-BACKTRACE :CONDITION E)
+                  (UIOP/IMAGE:QUIT 1)))
+               (WARNING #'MUFFLE-WARNING))
+  (ASDF/OPERATE:MAKE \"cl-brewer\"))"
 
     system "bash", "-c", "mkdir dyn-libs && find bin/ -name '*.dylib' -exec mv '{}' dyn-libs/ \\;"
 
