@@ -1,5 +1,5 @@
-40Ants's soft, packaged for Homebrew
-====================================
+Common Lisp Soft, Packaged for Homebrew
+=======================================
 
 Programs included into the tap
 ------------------------------
